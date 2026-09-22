@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import Button from '../components/Button.astro';
+---
+
+<Layout title="Contact Us - Tailspin Toys">
+  <section class="max-w-3xl mx-auto px-4 py-8" data-testid="contact-section">
+    <Card class="shadow-lg p-8 transition-colors duration-300">
+      <h2 class="text-blue-400 text-3xl mb-6 font-bold" data-testid="contact-heading">Contact Us</h2>
+
+      <form action="/api/contact" method="post" class="space-y-6" data-testid="contact-form">
+        <!-- Honeypot field to deter bots (hidden from users) -->
+        <div style="position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;" aria-hidden="true">
+          <label for="website">Website</label>
+          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <div>
+          <label for="subject" class="block text-sm font-medium text-slate-200">Subject</label>
+          <input id="subject" name="subject" type="text" required class="mt-1 block w-full rounded-md bg-slate-800 border border-slate-700 text-slate-100 px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none" data-testid="contact-subject" />
+        </div>
+
+        <div>
+          <label for="message" class="block text-sm font-medium text-slate-200">Message</label>
+          <textarea id="message" name="message" rows="6" required class="mt-1 block w-full rounded-md bg-slate-800 border border-slate-700 text-slate-100 px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none" data-testid="contact-message"></textarea>
+        </div>
+
+        <div class="flex items-center justify-between">
+          <div class="text-sm text-slate-400">All fields required. We use a hidden honeypot to reduce spam.</div>
+          <Button type="submit" variant="solid" data-testid="contact-submit">Send message</Button>
+        </div>
+      </form>
+    </Card>
+  </section>
+</Layout>
